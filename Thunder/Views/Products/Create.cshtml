@@ -7,10 +7,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Product</h4>
         <hr />
@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ProductDetails, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ProductDetails, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.ProductDetails, new { htmlAttributes = new { @class = "form-control", @id = "editor1" } })
                 @Html.ValidationMessageFor(model => model.ProductDetails, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -93,4 +93,11 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        CKEDITOR.replace('editor1');
+    </script>
 }
+
+
+
+

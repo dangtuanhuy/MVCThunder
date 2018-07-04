@@ -37,6 +37,7 @@ namespace Thunder.Controllers
         }
 
         // GET: Products/Create
+        [ValidateInput(false)]
         public ActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
@@ -48,6 +49,7 @@ namespace Thunder.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductId,ProduceCode,ProductName,ProductDetails,ProductUpdate,ProductQty,ProductSold,SupplierId,CategoryId")] Product product)
         {
@@ -64,6 +66,7 @@ namespace Thunder.Controllers
         }
 
         // GET: Products/Edit/5
+        [ValidateInput(false)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,6 +87,7 @@ namespace Thunder.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ProductId,ProduceCode,ProductName,ProductDetails,ProductUpdate,ProductQty,ProductSold,SupplierId,CategoryId")] Product product)
         {
