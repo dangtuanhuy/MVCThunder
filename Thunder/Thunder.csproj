@@ -664,6 +664,7 @@
     <Content Include="Content\LibraryThunder\img\icons\line-icon.png" />
     <Content Include="Content\LibraryThunder\img\icons\search-line-icon.png" />
     <Content Include="Content\LibraryThunder\img\icons\social.png" />
+    <Content Include="Content\LibraryThunder\img\icons\Thunder.ico" />
     <Content Include="Content\LibraryThunder\img\icons\weather-hover.png" />
     <Content Include="Content\LibraryThunder\img\icons\weather.png" />
     <Content Include="Content\LibraryThunder\img\India.png" />
