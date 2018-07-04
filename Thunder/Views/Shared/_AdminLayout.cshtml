@@ -67,7 +67,7 @@
             </div>
 
             <!--logo start-->
-            <a href="#" class="logo">Thunder <span class="lite">Shop</span></a>
+            <a href="@Url.Action("Index", "Home")" class="logo">Thunder <span class="lite">Shop</span></a>
             <!--logo end-->
 
             <div class="nav search-row" id="top_menu">
@@ -336,24 +336,24 @@
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon_document_alt"></i>
-                            <span>Forms</span>
+                            <span>Product</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="#">Form Elements</a></li>
-                            <li><a class="" href="#">Form Validation</a></li>
+                            <li><a class="" href="@Url.Action("Index", "Categories")">Category</a></li>
+                            <li><a class="" href="@Url.Action("Index", "Supplier")">Supliser</a></li>
+                            <li><a class="" href="#">Products</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
-                            <i class="icon_desktop"></i>
-                            <span>UI Fitures</span>
+                            <i class="icon_building"></i>
+                            <span>Employee</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="#">Elements</a></li>
-                            <li><a class="" href="#">Buttons</a></li>
-                            <li><a class="" href="#">Grids</a></li>
+                            <li><a class="" href="#">Region</a></li>
+                            <li><a class="" href="#">Employee</a></li>
                         </ul>
                     </li>
                     <li>
@@ -554,7 +554,9 @@
     <script src="~/Content/LibraryThunder/js/sparklines.js"></script>
     <script src="~/Content/LibraryThunder/js/charts.js"></script>
     <script src="~/Content/LibraryThunder/js/jquery.slimscroll.min.js"></script>
-  
+    <link href="~/Content/LibraryThunder/datatables/datatables.min.css" rel="stylesheet" />
+    <script src="~/Content/LibraryThunder/datatables/datatables.js"></script>
+
     <script>
       //knob
       $(function() {
@@ -601,6 +603,7 @@
       });
     </script>
 
+    @RenderSection("scripts", required: false)
 </body>
 
 </html>

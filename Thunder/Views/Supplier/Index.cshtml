@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = "~/Views/Shared/_AdminLayout.cshtml.cshtml";
 }
 
 <h2 class="text-center">Quản lý Nhà Cung Cấp</h2>
@@ -12,7 +12,7 @@
 </p>
 
 @*table dùng để hiển thị danh sách*@
-<table id="listSupplier" class="table table-responsive table-striped" border="1">
+<table id="listSupplier" class="table table-bordered table-striped table-responsive" >
     <thead>
         <tr>
             <th><label>Id</label></th>
@@ -293,4 +293,14 @@
             $("#HomePage").val("");
         }
     </script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#listSupplier').DataTable();
+
+
+    });
+</script>
+
 }
+
+
