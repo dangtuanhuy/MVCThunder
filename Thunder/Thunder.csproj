@@ -741,8 +741,6 @@
     <Content Include="Content\LibraryThunder\js\sparkline-chart.js" />
     <Content Include="Content\LibraryThunder\js\sparklines.js" />
     <Content Include="Content\LibraryThunder\js\xcharts.min.js" />
-    <Content Include="DB\CMD\CMD.png" />
-    <Content Include="DB\Script\ShoppingCart.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -947,7 +945,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\LibraryThunder\assets\jquery-file-upload\server\php\files\thumbnail\" />
-    <Folder Include="DB\DB-SQL\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
