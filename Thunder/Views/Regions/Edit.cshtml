@@ -2,9 +2,10 @@
 
 @{
     ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2 class="text-center">Edit Regions</h2>
 
 
 @using (Html.BeginForm())
@@ -12,31 +13,49 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Region</h4>
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.RegionId)
 
         <div class="form-group">
+            @Html.LabelFor(model => model.RegionName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RegionName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RegionName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.RegionDescription, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RegionDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.RegionDescription, new { htmlAttributes = new { @class = "form-control", @Id = "editor1" } })
                 @Html.ValidationMessageFor(model => model.RegionDescription, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <button type="submit" class="btn btn-success" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                </button>
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Index", "Regions")" class="btn btn-default">
+        <i class="	glyphicon glyphicon-sort-by-attributes"></i>
+        <span>
+
+        </span>
+    </a>
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script>
+        CKEDITOR.replace('editor1');
+</script>
 }

@@ -112,7 +112,13 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Index", "Branches")" class="btn btn-default">
+        <i class="	glyphicon glyphicon-sort-by-attributes"></i>
+        <span>
+
+        </span>
+    </a>
+   
 </div>
 
 @section Scripts {

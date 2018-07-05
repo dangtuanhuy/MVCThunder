@@ -36,6 +36,7 @@ namespace Thunder.Controllers
         }
 
         // GET: Regions/Create
+        [ValidateInput(false)]
         public ActionResult Create()
         {
             return View();
@@ -45,8 +46,9 @@ namespace Thunder.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RegionId,RegionDescription")] Region region)
+        public ActionResult Create([Bind(Include = "RegionId,RegionName,RegionDescription")] Region region)
         {
             if (ModelState.IsValid)
             {
@@ -59,6 +61,7 @@ namespace Thunder.Controllers
         }
 
         // GET: Regions/Edit/5
+        [ValidateInput(false)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,8 +80,9 @@ namespace Thunder.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RegionId,RegionDescription")] Region region)
+        public ActionResult Edit([Bind(Include = "RegionId,RegionName,RegionDescription")] Region region)
         {
             if (ModelState.IsValid)
             {

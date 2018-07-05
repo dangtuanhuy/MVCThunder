@@ -44,7 +44,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ProductUpdate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ProductUpdate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.ProductUpdate, new { htmlAttributes = new { @class = "form-control", @Id = "hachibi" } })
                 @Html.ValidationMessageFor(model => model.ProductUpdate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -97,5 +97,10 @@
     @Scripts.Render("~/bundles/jqueryval")
 <script>
         CKEDITOR.replace('editor1');
+</script>
+<script>
+    $(function () {
+        $("#hachibi").datepicker();
+    });
 </script>
 }
