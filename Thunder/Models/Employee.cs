@@ -17,8 +17,8 @@ namespace Thunder.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee()
         {
+            this.Employee_Role = new HashSet<Employee_Role>();
             this.Orders = new HashSet<Order>();
-            this.Roles = new HashSet<Role>();
         }
     
         public int EmployeeCode { get; set; }
@@ -41,8 +41,8 @@ namespace Thunder.Models
     
         public virtual Region Region { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Employee_Role> Employee_Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Role> Roles { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

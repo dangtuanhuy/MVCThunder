@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\ACCPI_2017\HKIII\MVC\Thunder\Thunder\Models\ShoppingCart.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\ACCPI_2017\HKIII\MVC\TL06\Thunder\Thunder\Models\ShoppingCart.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

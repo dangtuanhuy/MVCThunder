@@ -19,6 +19,7 @@ namespace Thunder.Controllers
         }
         public ActionResult Index()
         {
+            
             return View();
         }
         //Khi dùng ajax để gọi thì Trang Index sẽ hiển thị đầu tiên (Ajax gồm get, set các đối tượng)

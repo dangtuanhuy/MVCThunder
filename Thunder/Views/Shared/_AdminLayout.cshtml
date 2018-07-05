@@ -19,7 +19,7 @@
 
     <title>Thunder Shop</title>
 
-
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/LibraryThunder/css/bootstrap.min.css" rel="stylesheet" />
  
     <link href="~/Content/LibraryThunder/css/bootstrap-theme.css" rel="stylesheet" />
@@ -341,7 +341,7 @@
                         </a>
                         <ul class="sub">
                             <li><a class="" href="@Url.Action("Index", "Categories")">Category</a></li>
-                            <li><a class="" href="@Url.Action("Index", "Supplier")">Supliser</a></li>
+                            <li><a class="" href="@Url.Action("Index", "Suppliers")">Supliser</a></li>
                             <li><a class="" href="@Url.Action("Index", "Products")">Products</a></li>
                         </ul>
                     </li>
@@ -357,9 +357,9 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="" href="#l">
+                        <a class="" href="@Url.Action("Index", "Branches")">
                             <i class="icon_genius"></i>
-                            <span>Widgets</span>
+                            <span>Branch</span>
                         </a>
                     </li>
                     <li>

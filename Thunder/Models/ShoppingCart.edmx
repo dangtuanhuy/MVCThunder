@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="AboutId" />
           </Key>
-          <Property Name="AboutId" Type="int" Nullable="false" />
+          <Property Name="AboutId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AboutCompany" Type="nvarchar" MaxLength="50" />
           <Property Name="AboutImg" Type="image" />
         </EntityType>
@@ -17,7 +17,7 @@
           <Key>
             <PropertyRef Name="BranchId" />
           </Key>
-          <Property Name="BranchId" Type="int" Nullable="false" />
+          <Property Name="BranchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BranchName" Type="nvarchar" MaxLength="50" />
           <Property Name="BranchDetails" Type="ntext" />
         </EntityType>
@@ -91,6 +91,7 @@
           </Key>
           <Property Name="EmployeeId" Type="int" Nullable="false" />
           <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="Note" Type="ntext" />
         </EntityType>
         <EntityType Name="ImgProduct">
           <Key>
@@ -137,6 +138,7 @@
           </Key>
           <Property Name="PromotionId" Type="int" Nullable="false" />
           <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="GiftDetails" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -169,7 +171,8 @@
             <PropertyRef Name="RegionId" />
           </Key>
           <Property Name="RegionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RegionDescription" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="RegionName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegionDescription" Type="ntext" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -191,16 +194,16 @@
             <PropertyRef Name="SupplierId" />
           </Key>
           <Property Name="SupplierId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CompanyName" Type="nvarchar" MaxLength="40" Nullable="false" />
-          <Property Name="ContactName" Type="nvarchar" MaxLength="30" />
-          <Property Name="ContactTitle" Type="nvarchar" MaxLength="30" />
-          <Property Name="Address" Type="nvarchar" MaxLength="60" />
-          <Property Name="City" Type="nvarchar" MaxLength="15" />
-          <Property Name="Region" Type="nvarchar" MaxLength="15" />
-          <Property Name="PostalCode" Type="nvarchar" MaxLength="10" />
-          <Property Name="Country" Type="nvarchar" MaxLength="15" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="24" />
-          <Property Name="Fax" Type="nvarchar" MaxLength="24" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Region" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
           <Property Name="HomePage" Type="ntext" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -470,7 +473,7 @@
           <Key>
             <PropertyRef Name="AboutId" />
           </Key>
-          <Property Name="AboutId" Type="Int32" Nullable="false" />
+          <Property Name="AboutId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AboutCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AboutImg" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
@@ -478,7 +481,7 @@
           <Key>
             <PropertyRef Name="BranchId" />
           </Key>
-          <Property Name="BranchId" Type="Int32" Nullable="false" />
+          <Property Name="BranchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BranchDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -547,8 +550,19 @@
           <Property Name="ReportsTo" Type="Int32" />
           <Property Name="RegionId" Type="Int32" />
           <NavigationProperty Name="Region" Relationship="Self.FK_Employee_Region" FromRole="Employee" ToRole="Region" />
+          <NavigationProperty Name="Employee_Role" Relationship="Self.FK_Employee_Role_Employee" FromRole="Employee" ToRole="Employee_Role" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Employee" FromRole="Employee" ToRole="Order" />
-          <NavigationProperty Name="Roles" Relationship="Self.Employee_Role" FromRole="Employee" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Employee_Role">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Role_Employee" FromRole="Employee_Role" ToRole="Employee" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Employee_Role_Role" FromRole="Employee_Role" ToRole="Role" />
         </EntityType>
         <EntityType Name="ImgProduct">
           <Key>
@@ -595,6 +609,17 @@
           <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetails_Order" FromRole="OrderDetails" ToRole="Order" />
           <NavigationProperty Name="Product" Relationship="Self.FK_OrderDetails_Products" FromRole="OrderDetails" ToRole="Products" />
         </EntityType>
+        <EntityType Name="Product_Promotion">
+          <Key>
+            <PropertyRef Name="PromotionId" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="PromotionId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="GiftDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Promotion_Products" FromRole="Product_Promotion" ToRole="Products" />
+          <NavigationProperty Name="Promotion" Relationship="Self.FK_Product_Promotion_Promotion" FromRole="Product_Promotion" ToRole="Promotion" />
+        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ProductId" />
@@ -611,8 +636,8 @@
           <NavigationProperty Name="Category" Relationship="Self.FK_Products_Category" FromRole="Products" ToRole="Category" />
           <NavigationProperty Name="ImgProducts" Relationship="Self.FK_ImgProduct_Products" FromRole="Products" ToRole="ImgProduct" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Products" FromRole="Products" ToRole="OrderDetails" />
+          <NavigationProperty Name="Product_Promotion" Relationship="Self.FK_Product_Promotion_Products" FromRole="Products" ToRole="Product_Promotion" />
           <NavigationProperty Name="Supplier" Relationship="Self.FK_Products_Supplier" FromRole="Products" ToRole="Supplier" />
-          <NavigationProperty Name="Promotions" Relationship="Self.Product_Promotion" FromRole="Products" ToRole="Promotion" />
         </EntityType>
         <EntityType Name="Promotion">
           <Key>
@@ -625,14 +650,15 @@
           <Property Name="PromotionStatus" Type="Boolean" />
           <Property Name="PromotionOpen" Type="DateTime" Precision="0" />
           <Property Name="PromotionClose" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Products" Relationship="Self.Product_Promotion" FromRole="Promotion" ToRole="Products" />
+          <NavigationProperty Name="Product_Promotion" Relationship="Self.FK_Product_Promotion_Promotion" FromRole="Promotion" ToRole="Product_Promotion" />
         </EntityType>
         <EntityType Name="Region">
           <Key>
             <PropertyRef Name="RegionId" />
           </Key>
           <Property Name="RegionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RegionDescription" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="RegionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegionDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Region" FromRole="Region" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Role">
@@ -641,7 +667,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.Employee_Role" FromRole="Role" ToRole="Employee" />
+          <NavigationProperty Name="Employee_Role" Relationship="Self.FK_Employee_Role_Role" FromRole="Role" ToRole="Employee_Role" />
         </EntityType>
         <EntityType Name="Shipper">
           <Key>
@@ -657,16 +683,16 @@
             <PropertyRef Name="SupplierId" />
           </Key>
           <Property Name="SupplierId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CompanyName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ContactName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="ContactTitle" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
-          <Property Name="City" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Region" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Country" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
-          <Property Name="Fax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="HomePage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Products_Supplier" FromRole="Supplier" ToRole="Products" />
         </EntityType>
@@ -722,6 +748,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Employee_Role_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Employee_Role" Type="Self.Employee_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeCode" />
+            </Principal>
+            <Dependent Role="Employee_Role">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Order_Employee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -733,6 +773,20 @@
             </Principal>
             <Dependent Role="Order">
               <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Role_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Employee_Role" Type="Self.Employee_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee_Role">
+              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -788,6 +842,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Product_Promotion_Products">
+          <End Role="Products" Type="Self.Product" Multiplicity="1" />
+          <End Role="Product_Promotion" Type="Self.Product_Promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Product_Promotion">
+              <PropertyRef Name="PromotionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Promotion_Promotion">
+          <End Role="Promotion" Type="Self.Promotion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product_Promotion" Type="Self.Product_Promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promotion">
+              <PropertyRef Name="PromotionId" />
+            </Principal>
+            <Dependent Role="Product_Promotion">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Products_Supplier">
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -802,14 +882,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Employee_Role">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-          <End Role="Role" Type="Self.Role" Multiplicity="*" />
-        </Association>
-        <Association Name="Product_Promotion">
-          <End Role="Products" Type="Self.Product" Multiplicity="*" />
-          <End Role="Promotion" Type="Self.Promotion" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="ShoppingCartEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Abouts" EntityType="Self.About" />
           <EntitySet Name="Branches" EntityType="Self.Branch" />
@@ -817,9 +889,11 @@
           <EntitySet Name="Contacts" EntityType="Self.Contact" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Employee_Role" EntityType="Self.Employee_Role" />
           <EntitySet Name="ImgProducts" EntityType="Self.ImgProduct" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="Product_Promotion" EntityType="Self.Product_Promotion" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="Promotions" EntityType="Self.Promotion" />
           <EntitySet Name="Regions" EntityType="Self.Region" />
@@ -839,9 +913,17 @@
             <End Role="Region" EntitySet="Regions" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role_Employee" Association="Self.FK_Employee_Role_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Employee_Role" EntitySet="Employee_Role" />
+          </AssociationSet>
           <AssociationSet Name="FK_Order_Employee" Association="Self.FK_Order_Employee">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role_Role" Association="Self.FK_Employee_Role_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Employee_Role" EntitySet="Employee_Role" />
           </AssociationSet>
           <AssociationSet Name="FK_ImgProduct_Products" Association="Self.FK_ImgProduct_Products">
             <End Role="Products" EntitySet="Products" />
@@ -859,17 +941,17 @@
             <End Role="Products" EntitySet="Products" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_Product_Promotion_Products" Association="Self.FK_Product_Promotion_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Product_Promotion" EntitySet="Product_Promotion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Promotion_Promotion" Association="Self.FK_Product_Promotion_Promotion">
+            <End Role="Promotion" EntitySet="Promotions" />
+            <End Role="Product_Promotion" EntitySet="Product_Promotion" />
+          </AssociationSet>
           <AssociationSet Name="FK_Products_Supplier" Association="Self.FK_Products_Supplier">
             <End Role="Supplier" EntitySet="Suppliers" />
             <End Role="Products" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="Employee_Role" Association="Self.Employee_Role">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="Role" EntitySet="Roles" />
-          </AssociationSet>
-          <AssociationSet Name="Product_Promotion" Association="Self.Product_Promotion">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="Promotion" EntitySet="Promotions" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -963,6 +1045,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Employee_Role">
+            <EntityTypeMapping TypeName="ShoppingCartModel.Employee_Role">
+              <MappingFragment StoreEntitySet="Employee_Role">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ImgProducts">
             <EntityTypeMapping TypeName="ShoppingCartModel.ImgProduct">
               <MappingFragment StoreEntitySet="ImgProduct">
@@ -1003,6 +1094,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Product_Promotion">
+            <EntityTypeMapping TypeName="ShoppingCartModel.Product_Promotion">
+              <MappingFragment StoreEntitySet="Product_Promotion">
+                <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="GiftDetails" ColumnName="GiftDetails" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="ShoppingCartModel.Product">
               <MappingFragment StoreEntitySet="Products">
@@ -1035,6 +1135,7 @@
             <EntityTypeMapping TypeName="ShoppingCartModel.Region">
               <MappingFragment StoreEntitySet="Region">
                 <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="RegionName" ColumnName="RegionName" />
                 <ScalarProperty Name="RegionDescription" ColumnName="RegionDescription" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1085,22 +1186,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="Employee_Role" TypeName="ShoppingCartModel.Employee_Role" StoreEntitySet="Employee_Role">
-            <EndProperty Name="Employee">
-              <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeId" />
-            </EndProperty>
-            <EndProperty Name="Role">
-              <ScalarProperty Name="Id" ColumnName="RoleId" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="Product_Promotion" TypeName="ShoppingCartModel.Product_Promotion" StoreEntitySet="Product_Promotion">
-            <EndProperty Name="Products">
-              <ScalarProperty Name="ProductId" ColumnName="PromotionId" />
-            </EndProperty>
-            <EndProperty Name="Promotion">
-              <ScalarProperty Name="PromotionId" ColumnName="ProductId" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

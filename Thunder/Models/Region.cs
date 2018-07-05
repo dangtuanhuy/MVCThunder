@@ -21,6 +21,7 @@ namespace Thunder.Models
         }
     
         public int RegionId { get; set; }
+        public string RegionName { get; set; }
         public string RegionDescription { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

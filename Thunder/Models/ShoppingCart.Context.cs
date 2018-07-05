@@ -31,9 +31,11 @@ namespace Thunder.Models
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Employee_Role> Employee_Role { get; set; }
         public virtual DbSet<ImgProduct> ImgProducts { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+        public virtual DbSet<Product_Promotion> Product_Promotion { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Promotion> Promotions { get; set; }
         public virtual DbSet<Region> Regions { get; set; }

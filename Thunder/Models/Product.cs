@@ -19,7 +19,7 @@ namespace Thunder.Models
         {
             this.ImgProducts = new HashSet<ImgProduct>();
             this.OrderDetails = new HashSet<OrderDetail>();
-            this.Promotions = new HashSet<Promotion>();
+            this.Product_Promotion = new HashSet<Product_Promotion>();
         }
     
         public int ProductId { get; set; }
@@ -37,8 +37,8 @@ namespace Thunder.Models
         public virtual ICollection<ImgProduct> ImgProducts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-        public virtual Supplier Supplier { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Promotion> Promotions { get; set; }
+        public virtual ICollection<Product_Promotion> Product_Promotion { get; set; }
+        public virtual Supplier Supplier { get; set; }
     }
 }

@@ -2,38 +2,75 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create", "Branches")" class="btn btn-default">
+        <i class="	glyphicon glyphicon-floppy-saved"></i>
+        <span>
+
+        </span>
+    </a>
+   
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.BranchName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BranchDetails)
-        </th>
-        <th></th>
-    </tr>
+<table class="table table-bordered table-striped table-responsive" id="datatablefill">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BranchName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BranchDetails)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BranchName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BranchDetails)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "Branches", new { id = item.BranchId })" class="btn btn-default">
+                        <i class="glyphicon glyphicon-flash"></i>
+                        <span>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BranchName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BranchDetails)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BranchId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BranchId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BranchId })
-        </td>
-    </tr>
-}
+                        </span>
+                    </a>
+                    |
+                    <a href="@Url.Action("Details", "Branches", new { id = item.BranchId })" class="btn btn-default">
+                        <i class="	glyphicon glyphicon-list-alt"></i>
+                        <span>
 
+                        </span>
+                    </a>
+                    |
+
+                    <a href="@Url.Action("Delete", "Branches", new { id = item.BranchId })" class="btn btn-default">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        <span>
+
+                        </span>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#datatablefill').DataTable();
+
+
+        });
+    </script>
+}

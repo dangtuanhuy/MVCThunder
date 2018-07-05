@@ -10,107 +10,107 @@ using Thunder.Models;
 
 namespace Thunder.Controllers
 {
-    public class AboutsController : Controller
+    public class SuppliersController : Controller
     {
         private ShoppingCartEntities db = new ShoppingCartEntities();
 
-        // GET: Abouts
+        // GET: Suppliers
         public ActionResult Index()
         {
-            return View(db.Abouts.ToList());
+            return View(db.Suppliers.ToList());
         }
 
-        // GET: Abouts/Details/5
+        // GET: Suppliers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            About about = db.Abouts.Find(id);
-            if (about == null)
+            Supplier supplier = db.Suppliers.Find(id);
+            if (supplier == null)
             {
                 return HttpNotFound();
             }
-            return View(about);
+            return View(supplier);
         }
 
-        // GET: Abouts/Create
+        // GET: Suppliers/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Abouts/Create
+        // POST: Suppliers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AboutId,AboutCompany,AboutImg")] About about)
+        public ActionResult Create([Bind(Include = "SupplierId,CompanyName,ContactName,ContactTitle,Address,City,Region,PostalCode,Country,Phone,Fax,HomePage")] Supplier supplier)
         {
             if (ModelState.IsValid)
             {
-                db.Abouts.Add(about);
+                db.Suppliers.Add(supplier);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(about);
+            return View(supplier);
         }
 
-        // GET: Abouts/Edit/5
+        // GET: Suppliers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            About about = db.Abouts.Find(id);
-            if (about == null)
+            Supplier supplier = db.Suppliers.Find(id);
+            if (supplier == null)
             {
                 return HttpNotFound();
             }
-            return View(about);
+            return View(supplier);
         }
 
-        // POST: Abouts/Edit/5
+        // POST: Suppliers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AboutId,AboutCompany,AboutImg")] About about)
+        public ActionResult Edit([Bind(Include = "SupplierId,CompanyName,ContactName,ContactTitle,Address,City,Region,PostalCode,Country,Phone,Fax,HomePage")] Supplier supplier)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(about).State = EntityState.Modified;
+                db.Entry(supplier).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(about);
+            return View(supplier);
         }
 
-        // GET: Abouts/Delete/5
+        // GET: Suppliers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            About about = db.Abouts.Find(id);
-            if (about == null)
+            Supplier supplier = db.Suppliers.Find(id);
+            if (supplier == null)
             {
                 return HttpNotFound();
             }
-            return View(about);
+            return View(supplier);
         }
 
-        // POST: Abouts/Delete/5
+        // POST: Suppliers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            About about = db.Abouts.Find(id);
-            db.Abouts.Remove(about);
+            Supplier supplier = db.Suppliers.Find(id);
+            db.Suppliers.Remove(supplier);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
