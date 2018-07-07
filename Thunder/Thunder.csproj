@@ -1333,11 +1333,11 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\ImgProducts\Create.cshtml" />
-    <Content Include="Views\ImgProducts\Delete.cshtml" />
-    <Content Include="Views\ImgProducts\Details.cshtml" />
-    <Content Include="Views\ImgProducts\Edit.cshtml" />
-    <Content Include="Views\ImgProducts\Index.cshtml" />
+    <Content Include="Views\Home\ImgProducts\Create.cshtml" />
+    <Content Include="Views\Home\ImgProducts\Delete.cshtml" />
+    <Content Include="Views\Home\ImgProducts\Details.cshtml" />
+    <Content Include="Views\Home\ImgProducts\Edit.cshtml" />
+    <Content Include="Views\Home\ImgProducts\Index.cshtml" />
     <Content Include="Views\Promotions\Create.cshtml" />
     <Content Include="Views\Promotions\Delete.cshtml" />
     <Content Include="Views\Promotions\Details.cshtml" />
