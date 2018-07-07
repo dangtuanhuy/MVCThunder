@@ -1236,6 +1236,11 @@
     <Content Include="Content\LibraryThunder\ckeditor\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="Content\LibraryThunder\ckeditor\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Content\LibraryThunder\ckeditor\ckeditor\skins\moono-lisa\readme.md" />
+    <Content Include="Content\LibraryHome\fonts\BreeSerif-Regular.ttf" />
+    <Content Include="Content\LibraryHome\fonts\Lato-Regular.ttf" />
+    <Content Include="Content\LibraryHome\fonts\Lora-Regular.ttf" />
+    <Content Include="Content\LibraryHome\fonts\Muli-Regular.ttf" />
+    <Content Include="Content\LibraryHome\fonts\Philosopher-Regular.ttf" />
     <EntityDeploy Include="Models\ShoppingCart.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ShoppingCart.Designer.cs</LastGenOutput>
@@ -1253,11 +1258,6 @@
       <DependentUpon>ShoppingCart.edmx</DependentUpon>
       <LastGenOutput>ShoppingCart.cs</LastGenOutput>
     </Content>
-    <Content Include="Content\LibraryHome\fonts\BreeSerif-Regular.ttf" />
-    <Content Include="Content\LibraryHome\fonts\Lato-Regular.ttf" />
-    <Content Include="Content\LibraryHome\fonts\Lora-Regular.ttf" />
-    <Content Include="Content\LibraryHome\fonts\Muli-Regular.ttf" />
-    <Content Include="Content\LibraryHome\fonts\Philosopher-Regular.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
