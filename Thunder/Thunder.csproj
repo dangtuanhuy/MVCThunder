@@ -256,6 +256,50 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\LibraryHome\css\bootstrap.css" />
+    <Content Include="Content\LibraryHome\css\flexslider.css" />
+    <Content Include="Content\LibraryHome\css\memenu.css" />
+    <Content Include="Content\LibraryHome\css\style.css" />
+    <Content Include="Content\LibraryHome\images\11.png" />
+    <Content Include="Content\LibraryHome\images\abt-1.jpg" />
+    <Content Include="Content\LibraryHome\images\abt-2.jpg" />
+    <Content Include="Content\LibraryHome\images\abt-3.jpg" />
+    <Content Include="Content\LibraryHome\images\arrow.png" />
+    <Content Include="Content\LibraryHome\images\bnr-1.jpg" />
+    <Content Include="Content\LibraryHome\images\bnr-2.jpg" />
+    <Content Include="Content\LibraryHome\images\bnr-3.jpg" />
+    <Content Include="Content\LibraryHome\images\c-1.jpg" />
+    <Content Include="Content\LibraryHome\images\c-2.jpg" />
+    <Content Include="Content\LibraryHome\images\c-3.jpg" />
+    <Content Include="Content\LibraryHome\images\cart-1.png" />
+    <Content Include="Content\LibraryHome\images\cart-2.png" />
+    <Content Include="Content\LibraryHome\images\cart-3.png" />
+    <Content Include="Content\LibraryHome\images\close.png" />
+    <Content Include="Content\LibraryHome\images\crossword.png" />
+    <Content Include="Content\LibraryHome\images\p-1.png" />
+    <Content Include="Content\LibraryHome\images\p-2.png" />
+    <Content Include="Content\LibraryHome\images\p-3.png" />
+    <Content Include="Content\LibraryHome\images\p-4.png" />
+    <Content Include="Content\LibraryHome\images\p-5.png" />
+    <Content Include="Content\LibraryHome\images\p-6.png" />
+    <Content Include="Content\LibraryHome\images\p-7.png" />
+    <Content Include="Content\LibraryHome\images\p-8.png" />
+    <Content Include="Content\LibraryHome\images\pr-1.jpg" />
+    <Content Include="Content\LibraryHome\images\pr-2.jpg" />
+    <Content Include="Content\LibraryHome\images\s-1.jpg" />
+    <Content Include="Content\LibraryHome\images\s-2.jpg" />
+    <Content Include="Content\LibraryHome\images\s-3.jpg" />
+    <Content Include="Content\LibraryHome\images\s-icons.png" />
+    <Content Include="Content\LibraryHome\images\search.png" />
+    <Content Include="Content\LibraryHome\images\star.png" />
+    <Content Include="Content\LibraryHome\images\tick.png" />
+    <Content Include="Content\LibraryHome\js\imagezoom.js" />
+    <Content Include="Content\LibraryHome\js\jquery-1.11.0.min.js" />
+    <Content Include="Content\LibraryHome\js\jquery.easydropdown.js" />
+    <Content Include="Content\LibraryHome\js\jquery.flexslider.js" />
+    <Content Include="Content\LibraryHome\js\memenu.js" />
+    <Content Include="Content\LibraryHome\js\responsiveslides.min.js" />
+    <Content Include="Content\LibraryHome\js\simpleCart.min.js" />
     <Content Include="Content\LibraryThunder\assets\chart-master\Chart.js" />
     <Content Include="Content\LibraryThunder\assets\chart-master\Chart.min.js" />
     <Content Include="Content\LibraryThunder\assets\chart-master\docs\Chart.js" />
@@ -1209,6 +1253,11 @@
       <DependentUpon>ShoppingCart.edmx</DependentUpon>
       <LastGenOutput>ShoppingCart.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\LibraryHome\fonts\BreeSerif-Regular.ttf" />
+    <Content Include="Content\LibraryHome\fonts\Lato-Regular.ttf" />
+    <Content Include="Content\LibraryHome\fonts\Lora-Regular.ttf" />
+    <Content Include="Content\LibraryHome\fonts\Muli-Regular.ttf" />
+    <Content Include="Content\LibraryHome\fonts\Philosopher-Regular.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1310,6 +1359,8 @@
     <Content Include="Views\Regions\Details.cshtml" />
     <Content Include="Views\Regions\Edit.cshtml" />
     <Content Include="Views\Regions\Index.cshtml" />
+    <Content Include="Views\Shared\_HomeLayout.cshtml" />
+    <Content Include="Views\Home\HomePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

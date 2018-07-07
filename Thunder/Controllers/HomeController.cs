@@ -26,5 +26,9 @@ namespace Thunder.Controllers
 
             return View();
         }
+        public ActionResult HomePage()
+        {
+            return View();
+        }
     }
 }
